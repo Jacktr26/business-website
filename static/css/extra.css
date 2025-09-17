@@ -1,0 +1,40 @@
+/* Dark neon global styles */
+.navlink { color: rgba(255,255,255,0.75); transition: .2s; }
+.navlink:hover { color: white; }
+.link { color: rgba(255,255,255,0.8); }
+.link:hover { color: white; }
+.btn {
+  border-radius: 9999px; padding: 0.7rem 1.1rem;
+  display: inline-flex; align-items: center; gap:.5rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: rgb(99 102 241); color: white; border-color: rgb(99 102 241); }
+.card-dark {
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(20,20,24,.6), rgba(20,20,24,.3));
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.glass-dark {
+  backdrop-filter: blur(14px);
+  background: rgba(18,18,22,.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+}
+.neon-title {
+  background: linear-gradient(90deg, #a5b4fc, #8B5CF6);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-neon { position: relative; }
+.hero-neon::before{
+  content:""; position:absolute; inset: -20% -10% auto -10%;
+  height: 60vh;
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(99,102,241,.35), transparent 60%),
+    radial-gradient(30% 40% at 80% 10%, rgba(168,85,247,.25), transparent 60%);
+  filter: blur(32px); pointer-events: none;
+}
+.prose.prose-invert { color: #E4E4E7; }
+.prose.prose-invert a { color: #a5b4fc; }

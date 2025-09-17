@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {# ---- Site-wide fallbacks ---- #}
+  {% set site_name = site_name or "Launchly Studios" %}
+  {% set site_url  = site_url  or "https://launchlystudios.com" %}
+  {% set page_url  = canonical  or (site_url ~ request.path if request else site_url) %}
+
+  <title>{% block title %}{{ title or (site_name ~ " – Small-business websites") }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Fast, modern small-business websites with bookings & Stripe.{% endblock %}">
+  <link rel="canonical" href="{{ page_url }}">
+  {% block meta_robots %}<meta name="robots" content="index,follow">{% endblock %}
+
+  {# ---- Open Graph / Twitter ---- #}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site_name }}">
+  <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ self.meta_description() }}{% endblock %}">
+  <meta property="og:url" content="{{ page_url }}">
+  <meta property="og:image" content="{% block og_image %}{{ site_url }}/static/img/og-default.jpg{% endblock %}">
+  <meta property="og:image:alt" content="{% block og_image_alt %}{{ site_name }}{% endblock %}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block tw_title %}{{ self.title() }}{% endblock %}">
+  <meta name="twitter:description" content="{% block tw_description %}{{ self.meta_description() }}{% endblock %}">
+  <meta name="twitter:image" content="{% block tw_image %}{{ self.og_image() }}{% endblock %}">
+
+  {# ---- Tailwind CDN (config first!) ---- #}
+  <script>
+    tailwind = window.tailwind || {};
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { bgd: { 900: "#0a0a0b", 800: "#0f0f12" } },
+          fontFamily: { display: ['Inter','ui-sans-serif','system-ui'] }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/extra.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+  {# ---- LocalBusiness schema ---- #}
+  {% block jsonld %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{ site_name }}",
+    "url": "{{ site_url }}",
+    "image": "{{ site_url }}/static/img/og-default.jpg",
+    "description": "{{ self.meta_description() | e }}",
+    "email": "hello@launchlystudios.com",
+    "address": { "@type": "PostalAddress", "addressCountry": "GB" }
+  }
+  </script>
+  {% endblock %}
+
+  {# Extra per-page head (e.g., GA tag, noindex) #}
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="min-h-full bg-zinc-950 text-zinc-100 font-display">
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-zinc-950/70 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="{{ url_for('index') }}" class="flex items-center gap-2">
+        <img src="{{ url_for('static', filename='launchly_logo.png') }}" alt="Launchly Studios logo" class="h-[90px] w-auto">
+        <span class="font-bold tracking-tight text-white">Launchly<span class="text-indigo-400">Studios</span></span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="{{ url_for('index') }}" class="navlink">Home</a>
+        <a href="{{ url_for('portfolio') }}" class="navlink">Portfolio</a>
+        <a href="{{ url_for('templates_page') }}" class="navlink">Templates</a>
+        <a href="{{ url_for('pricing') }}" class="navlink">Pricing</a>
+        <a href="{{ url_for('book') }}" class="navlink">Book</a>
+        <a href="{{ url_for('contact') }}" class="navlink">Contact</a>
+      </nav>
+      <a href="{{ url_for('book') }}" class="btn btn-primary">Get a site in 48h</a>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="mt-20 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6 text-sm">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <img src="{{ url_for('static', filename='launchly_logo.png') }}" alt="Launchly Studios logo" class="h-6 w-auto">
+          <span class="font-semibold text-white">Launchly Studios</span>
+        </div>
+        <p class="text-zinc-400">Launch-ready websites in days — not months.</p>
+      </div>
+      <div>
+        <div class="font-semibold mb-2 text-white">Links</div>
+        <ul class="space-y-1">
+          <li><a class="link" href="{{ url_for('pricing') }}">Pricing</a></li>
+          <li><a class="link" href="{{ url_for('templates_page') }}">Templates</a></li>
+          <li><a class="link" href="{{ url_for('contact') }}">Contact</a></li>
+          <li><a class="link" href="{{ url_for('privacy') }}">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold mb-2 text-white">Legal</div>
+        <p class="text-zinc-400">© 2025 Launchly Studios. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+  <script defer src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+</body>
+</html>

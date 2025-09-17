@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero-neon">
+  <div class="max-w-6xl mx-auto px-4 pt-20 pb-24 text-center">
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+      Fast, beautiful websites
+      <span class="block mt-2 neon-title">for small businesses</span>
+    </h1>
+    <p class="mt-5 text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto">
+      Mobile-first sites with booking & Stripe deposits — built and deployed in days, not months.
+    </p>
+    <div class="mt-8 flex items-center justify-center gap-3">
+      <a href="{{ url_for('pricing') }}" class="btn btn-primary">See pricing</a>
+      <a href="{{ url_for('portfolio') }}" class="btn">View work</a>
+    </div>
+
+    <div class="mt-10 max-w-3xl mx-auto grid md:grid-cols-3 gap-6">
+      <div class="card-dark p-6 text-center">
+        <div class="text-3xl mb-2">🚀</div>
+        <div class="font-semibold text-white">48h Launch</div>
+        <p class="text-sm text-zinc-300 mt-1">Your site live in two days, guaranteed.</p>
+      </div>
+      <div class="card-dark p-6 text-center">
+        <div class="text-3xl mb-2">💳</div>
+        <div class="font-semibold text-white">Stripe Deposits</div>
+        <p class="text-sm text-zinc-300 mt-1">Secure payments integrated from day one.</p>
+      </div>
+      <div class="card-dark p-6 text-center">
+        <div class="text-3xl mb-2">📈</div>
+        <div class="font-semibold text-white">SEO Ready</div>
+        <p class="text-sm text-zinc-300 mt-1">Built-in optimisation to get you found online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Everything you need to look legit online</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card-dark p-6">
+        <div class="text-lg font-semibold text-white">Lightning fast</div>
+        <p class="mt-2 text-sm text-zinc-300">Tailwind, CDN, image optimisation for strong Lighthouse scores.</p>
+      </div>
+      <div class="card-dark p-6">
+        <div class="text-lg font-semibold text-white">Booking & payments</div>
+        <p class="mt-2 text-sm text-zinc-300">Built-in calendar + Stripe Checkout to secure deposits.</p>
+      </div>
+      <div class="card-dark p-6">
+        <div class="text-lg font-semibold text-white">SEO + analytics</div>
+        <p class="mt-2 text-sm text-zinc-300">On-page SEO and Google Analytics to track conversions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-end justify-between mb-6">
+      <h2 class="text-2xl md:text-3xl font-bold">Recent projects</h2>
+      <a class="text-sm text-indigo-400 hover:text-white" href="{{ url_for('portfolio') }}">See all →</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Arnold Brothers -->
+      <a class="card-dark overflow-hidden group" href="https://arnoldbrothersguitar.co.uk/" target="_blank" rel="noopener">
+        <img src="{{ url_for('static', filename='img/arnold-brothers.jpg') }}" alt="Arnold Brothers Guitar website" class="h-44 w-full object-cover">
+        <div class="p-5">
+          <div class="font-semibold text-white group-hover:text-indigo-300">Arnold Brothers Guitar</div>
+          <p class="text-sm text-zinc-400">Band site with gigs calendar & booking</p>
+        </div>
+      </a>
+
+      <!-- Placeholder 1 -->
+      <div class="card-dark overflow-hidden">
+        <div class="h-44 bg-gradient-to-br from-zinc-800 to-zinc-900"></div>
+        <div class="p-5">
+          <div class="font-semibold text-white">Coming soon</div>
+          <p class="text-sm text-zinc-400">Another project currently in development.</p>
+        </div>
+      </div>
+
+      <!-- Placeholder 2 -->
+      <div class="card-dark overflow-hidden">
+        <div class="h-44 bg-gradient-to-br from-zinc-800 to-zinc-900"></div>
+        <div class="p-5">
+          <div class="font-semibold text-white">Coming soon</div>
+          <p class="text-sm text-zinc-400">Future showcase placeholder.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-4 text-center glass-dark p-10">
+    <h2 class="text-2xl md:text-3xl font-bold">Ready to launch?</h2>
+    <p class="mt-2 text-zinc-300">Pick a slot and secure it with a small deposit. We’ll handle the rest.</p>
+    <div class="mt-6 flex items-center justify-center gap-3">
+      <a class="btn btn-primary" href="{{ url_for('book') }}">Book a build slot</a>
+      <a class="btn" href="{{ url_for('contact') }}">Ask a question</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

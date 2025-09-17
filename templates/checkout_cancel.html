@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-3xl mx-auto px-4 py-20 text-center">
+  <h1 class="text-3xl font-bold mb-4">Payment cancelled</h1>
+  <p>No worries — your date is released. You can pick another slot anytime.</p>
+  <a class="btn mt-6" href="{{ url_for('book') }}">Return to Booking</a>
+</section>
+{% endblock %}

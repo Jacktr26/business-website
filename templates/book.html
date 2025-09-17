@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-6xl mx-auto px-4 py-16">
+  <h1 class="text-3xl font-bold mb-6">Book a Build Slot</h1>
+  <p class="mb-6 text-zinc-300">Choose an available date. We’ll take a small deposit via Stripe to lock it in.</p>
+  <div id="calendar" class="glass-dark p-6"></div>
+  <div id="msg" class="mt-4 text-sm text-zinc-300"></div>
+</section>
+{% endblock %}

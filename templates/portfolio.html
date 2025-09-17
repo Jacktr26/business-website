@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-6xl mx-auto px-4 py-16">
+  <h1 class="text-3xl font-bold mb-6">Portfolio</h1>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- Real project: Arnold Brothers -->
+    <!-- Real project: Arnold Brothers -->
+<a class="card-dark overflow-hidden group" href="https://arnoldbrothersguitar.co.uk/" target="_blank" rel="noopener">
+  <img src="{{ url_for('static', filename='img/arnold-brothers.jpg') }}"
+       alt="Arnold Brothers Guitar website"
+       class="h-48 w-full object-cover">
+  <div class="p-5">
+    <div class="font-semibold text-white group-hover:text-indigo-300">Arnold Brothers Guitar</div>
+    <p class="text-sm text-zinc-400">Band site with gigs calendar & booking</p>
+  </div>
+</a>
+
+    <!-- Placeholder 1 -->
+    <div class="card-dark overflow-hidden">
+      <div class="h-48 w-full bg-gradient-to-br from-indigo-700/30 to-violet-700/10"></div>
+      <div class="p-5">
+        <div class="font-semibold text-white">Project in progress</div>
+        <p class="text-sm text-zinc-400">New client launch coming soon.</p>
+      </div>
+    </div>
+
+    <!-- Placeholder 2 -->
+    <div class="card-dark overflow-hidden">
+      <div class="h-48 w-full bg-gradient-to-br from-indigo-700/30 to-violet-700/10"></div>
+      <div class="p-5">
+        <div class="font-semibold text-white">Available slot</div>
+        <p class="text-sm text-zinc-400">Book now to feature your site here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
